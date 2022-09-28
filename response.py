@@ -72,7 +72,7 @@ class ResponseHandler:
         return "Location: " + self.BASE_URL + self.request.path + "/" + self.BLANK_LINE
 
     def __check_path_security(self):
-        full_base_path = os.getcwd() + self.BASE_DIRECTORY
+        full_base_path = os.path.realpath(os.getcwd() + self.BASE_DIRECTORY)
         full_real_path = os.path.realpath(self.full_path)
         if os.path.commonprefix((full_real_path,full_base_path)) != full_base_path:
             return False
