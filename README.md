@@ -24,3 +24,10 @@ examples thus some of the code is Copyright © 2001-2013 Python
 Software Foundation; All Rights Reserved under the PSF license (GPL
 compatible) http://docs.python.org/2/library/socketserver.html
 
+
+Sources
+=======
+The sources below were used to get a better understanding of http servers.
+
+1. Hindle, A and Campbell, H CMPUT 404 Slides and lectures
+2. Chauhan, B (2020) Writing an HTTP Server from Scratch https://bhch.github.io/posts/2017/11/writing-an-http-server-from-scratch/

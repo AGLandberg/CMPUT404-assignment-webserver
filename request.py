@@ -1,4 +1,3 @@
-#https://bhch.github.io/posts/2017/11/writing-an-http-server-from-scratch/
 class RequestProcessor:
 
     def __init__(self, data):

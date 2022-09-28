@@ -8,7 +8,6 @@ class MyWebServer(socketserver.BaseRequestHandler):
 
     def handle(self):
         self.data = self.request.recv(1024).strip()
-        print ("Got a request of: %s\n" % self.data)
         request = RequestProcessor(self.data)
         response_handler = ResponseHandler(request)
         self.request.sendall(bytearray(response_handler.handle_response(), 'utf-8'))
