@@ -33,12 +33,12 @@ class ResponseHandler:
             self.status_code = "405"
             return
         
-        secure_path =self. __check_path_security(path)
+        self.full_path = os.getcwd() + self.BASE_DIRECTORY + path
+
+        secure_path =self. __check_path_security()
         if not secure_path:
             self.status_code = "404"
             return
-
-        self.full_path = os.getcwd() + self.BASE_DIRECTORY + path
 
         if os.path.exists(self.full_path):
             if os.path.isdir(self.full_path) and self.full_path[-1] != "/":
@@ -71,8 +71,10 @@ class ResponseHandler:
     def __handle_301_response(self):
         return "Location: " + self.BASE_URL + self.request.path + "/" + self.BLANK_LINE
 
-    def __check_path_security(self, path):
-        if (path.startswith("/..") or "/../../" in path):
+    def __check_path_security(self):
+        full_base_path = os.getcwd() + self.BASE_DIRECTORY
+        full_real_path = os.path.realpath(self.full_path)
+        if os.path.commonprefix((full_real_path,full_base_path)) != full_base_path:
             return False
         return True
 
